@@ -1,0 +1,33 @@
+{
+	"name": "kap-streamable",
+	"version": "0.0.0",
+	"description": "Share on Streamable",
+	"license": "MIT",
+	"repository": "kevva/kap-streamable",
+	"author": {
+		"name": "Kevin Martensson",
+		"email": "kevinmartensson@gmail.com",
+		"url": "github.com/kevva"
+	},
+	"scripts": {
+		"test": "xo"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"apng",
+		"gif",
+		"kap-plugin",
+		"mp4",
+		"share",
+		"upload",
+		"webm"
+	],
+	"dependencies": {
+		"form-data": "^2.1.4"
+	},
+	"devDependencies": {
+		"xo": "*"
+	}
+}
