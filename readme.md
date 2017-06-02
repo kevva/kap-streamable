@@ -1,4 +1,4 @@
-# kap-streamable
+# kap-streamable [![Build Status](https://travis-ci.org/kevva/kap-streamable.svg?branch=master)](https://travis-ci.org/kevva/kap-streamable)
 
 > [Kap](https://github.com/wulkano/kap) plugin - Share on [Streamable](https://streamable.com)
 
