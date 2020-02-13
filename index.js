@@ -25,22 +25,29 @@ const action = async context => {
 	context.notify('URL to the video has been copied to the clipboard');
 };
 
+const config = {
+	username: {
+		title: 'Username',
+		type: 'string',
+		required: true
+	},
+	password: {
+		title: 'Password',
+		type: 'password',
+		required: true
+	}
+};
+
 const streamable = {
 	title: 'Share on Streamable',
-	formats: ['gif', 'mp4', 'webm', 'apng'],
+	formats: [
+		'gif',
+		'mp4',
+		'webm',
+		'apng'
+	],
 	action,
-	config: {
-		username: {
-			title: 'Username',
-			type: 'string',
-			required: true
-		},
-		password: {
-			title: 'Password',
-			type: 'password',
-			required: true
-		}
-	}
+	config
 };
 
 exports.shareServices = [streamable];

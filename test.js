@@ -10,6 +10,7 @@ test('request and copy to clipboard', async t => {
 		username: 'marty',
 		password: 'mcfly'
 	};
+
 	const plugin = kapPluginTest('unicorn.gif', {config});
 	plugin.context.request.resolves(response);
 	await plugin.run();
@@ -18,6 +19,16 @@ test('request and copy to clipboard', async t => {
 	delete request.body;
 
 	t.is(plugin.context.request.lastCall.args[0], 'https://api.streamable.com/upload');
-	t.deepEqual(request, {method: 'post', headers: {authorization: 'Basic bWFydHk6bWNmbHk='}});
+
+	t.deepEqual(
+		request,
+		{
+			method: 'post',
+			headers: {
+				authorization: 'Basic bWFydHk6bWNmbHk='
+			}
+		}
+	);
+
 	t.true(plugin.context.copyToClipboard.calledWith('https://streamable.com/rfyj3'));
 });
