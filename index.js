@@ -7,15 +7,19 @@ const action = async context => {
 	const filePath = await context.filePath();
 	const form = new FormData();
 
+	const credentials = `${context.config.get('username')}:${context.config.get('password')}`;
+	const authorization = Buffer.from(credentials).toString('base64');
+
 	context.setProgress('Uploading…');
 	form.append('file', fs.createReadStream(filePath));
 
 	const response = await context.request(endpoint, {
 		method: 'post',
-		body: form
+		body: form,
+		headers: {authorization: `Basic ${authorization}`}
 	});
 
-	const shortcode = JSON.parse(response.body).shortcode;
+	const {shortcode} = JSON.parse(response.body);
 
 	context.copyToClipboard(`https://streamable.com/${shortcode}`);
 	context.notify('URL to the video has been copied to the clipboard');
@@ -24,7 +28,19 @@ const action = async context => {
 const streamable = {
 	title: 'Share on Streamable',
 	formats: ['gif', 'mp4', 'webm', 'apng'],
-	action
+	action,
+	config: {
+		username: {
+			title: 'Username',
+			type: 'string',
+			required: true
+		},
+		password: {
+			title: 'Password',
+			type: 'password',
+			required: true
+		}
+	}
 };
 
 exports.shareServices = [streamable];
