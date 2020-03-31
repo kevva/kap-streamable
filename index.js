@@ -33,7 +33,7 @@ const config = {
 	},
 	password: {
 		title: 'Password',
-		type: 'password',
+		type: 'string',
 		required: true
 	}
 };
